@@ -52,7 +52,7 @@ exports.getId = function(req, res) {
 				res.status(200).json({
 					status: 200,
 					error: false,
-					message: 'Successfully get single data!',
+					message: 'Successfully get data products by id!',
 					data: results
 				});
 			} else {
@@ -75,7 +75,7 @@ exports.add = function(req, res) {
 
 	connection.query(
 		'INSERT INTO `products` (product_name, description, image, id_category, quantity, date_added, date_updated) values (?, ?, ?, ?, ?, ?, ?)',
-		[ product_name, description, image, id_category, quantity, date_added, date_updated ],
+		[ product_name, description, image, id_category, quantity, date_added, new Date() ],
 		function(err, results) {
 			if (err) {
 				console.log(err);
@@ -99,7 +99,7 @@ exports.add = function(req, res) {
 exports.update = function(req, res) {
 	const { product_name, description, image, id_category, quantity, date_added, date_updated } = req.body;
 
-	if (!product_name || !description || !image || !id_category || !quantity || !date_added || !date_updated) {
+	if (!product_name || !description || !image || !id_category || !quantity || !date_added) {
 		res.status(300).json({
 			status: 300,
 			error: true,
@@ -109,7 +109,7 @@ exports.update = function(req, res) {
 	} else {
 		connection.query(
 			'UPDATE `products` SET product_name = ?, description = ?, image = ?, id_category = ?, quantity = ?, date_added = ?, date_updated = ? where id = ?',
-			[ product_name, description, image, id_category, quantity, date_added, date_updated, req.params.id ],
+			[ product_name, description, image, id_category, quantity, date_added, new Date(), req.params.id ],
 			function(err, results) {
 				if (err) {
 					console.log(err);

@@ -17,15 +17,15 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(cors());
 
-app.use((req, res, next) => {
-	res.header('Acces-Control-Allow-Origin', 'http://192.168.43.83');
-	res.header('Access-Controll-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-	if (req.method === 'OPTIONS') {
-		res.header('Access-Controll-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-		res.ok().json({});
-	}
-	next();
-});
+// app.use((req, res, next) => {
+// 	res.header('Acces-Control-Allow-Origin', 'http://192.168.43.83');
+// 	res.header('Access-Controll-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+// 	if (req.method === 'OPTIONS') {
+// 		res.header('Access-Controll-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+// 		res.ok().json({});
+// 	}
+// 	next();
+// });
 
 const usersRoutes = require('./routes/users');
 const handleError = require('./routes/routes');

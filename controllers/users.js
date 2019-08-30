@@ -55,7 +55,10 @@ exports.register = (req, res) => {
 				res.status(200).json({
 					status: 200,
 					message: 'Succesfully Create New Users',
-					data: req.body
+					data: {
+						full_name: req.body.full_name,
+						email: req.body.email
+					}
 				});
 			}
 		}
@@ -84,7 +87,7 @@ exports.verifyToken = function verifyToken(req, res, next) {
 		//! Next middleware
 		jwt.verify(req.token, process.env.SECRET_KEY, (err) => {
 			if (err) {
-				res.sendStatus(403);
+				res.send('Access denied!!');
 			} else {
 				console.log('Succesfully!');
 				next();
@@ -92,6 +95,6 @@ exports.verifyToken = function verifyToken(req, res, next) {
 		});
 	} else {
 		//! Forbidden
-		res.sendStatus(403);
+		res.send('Please login to access app!!');
 	}
 };
