@@ -18,13 +18,19 @@
 - Node.js - Download and Install [Node.js](https://nodejs.org/en/) with [NVM](https://github.com/creationix/nvm) (Node Version Manager) - Simple bash script to manage multiple active node.js versions.
 - MySQL - Download and Install [MySQL](https://www.mysql.com/downloads/) - Make sure it's running on the default port.
 - Postman - Download and Install [Postman](https://www.getpostman.com/downloads) - Implementation with postman latest version.
+- Code Editor - Download and Install [VS Code](https://code.visualstudio.com/download) - Code editor that i use to create this project.
+- XAMPP - Download and Install [XAMPP](https://www.apachefriends.org/download.html) - XAMPP is a free and open-source cross-platform web server solution stack package developed by Apache Friends, consisting mainly of the Apache HTTP Server, MariaDB database, and interpreters for scripts written in the PHP and Perl programming languages. So, i don't need to install mysql anymore.
 
 ## Installation
 ### Clone
 ```
-$ git clone https://github.com/ErIrsyadK25/Node.js-Restful-API-With-MySQL-Inventory-App.git
-$ cd Node.js-Restful-API-With-MySQL-Inventory-App
-$ npm install
+$ git clone https://github.com/ErIrsyadK25/Expressjs-Restful-API-With-MySQL-Inventory-App.git
+$ cd Expressjs-Restful-API-With-MySQL-Inventory-App
+$ npm init -y
+$ npm install express --save
+$ npm install mysql --save
+$ npm install body-parser
+$ npm install jsonwebtoken
 ```
 
 ```
@@ -51,7 +57,7 @@ $ npm start
   - "sortBy" -> its value is name of column you want to sort,
   - "sort" -> its filtering your ascending or descending,
   - "limit" -> number of products displayed in a page (default 5),
-  - "pagenation" -> pagenation to display page.
+  - "page" -> redirect to specific page.
 
 #### POST Request
 - "/products" => Inserting a product to database. data required = name, description, image, id_category, quantity
